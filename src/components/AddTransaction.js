@@ -3,11 +3,9 @@ import { GlobalContext } from '../context/GloabState';
 
 function AddTransaction() {
 
-
     const [text, setText] = useState('');
     const [amount, setAmount] = useState(0);
-    let { addTrans, balance, expense, income, setincome, setbalance, setexpense } = useContext(GlobalContext);
-
+    let { addTrans } = useContext(GlobalContext);
 
     const NewTrans = {
         id: Math.random(),
@@ -19,26 +17,12 @@ function AddTransaction() {
     const addTransHandler = (e) => {
         e.preventDefault();
         addTrans(NewTrans);
-
-        if (amount < 0) {
-
-            setexpense(expense - amount)
-
-
-        }
-        else {
-
-            setincome(income + parseInt(amount))
-
-        }
-
-
     }
 
     return (
         <>
             <h3>Add new transaction</h3>
-            <form id="form">
+            <form>
                 <div className="form-control">
                     <label >Text</label>
                     <input

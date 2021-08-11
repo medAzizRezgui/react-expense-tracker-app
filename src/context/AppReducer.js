@@ -1,7 +1,5 @@
-
-
-
 export const reducer = (state, action) => {
+    console.log(state.transactions)
     switch (action.type) {
         case 'ADD-TRANS':
             return {

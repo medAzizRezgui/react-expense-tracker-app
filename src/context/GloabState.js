@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useState } from 'react';
+import React, { createContext, useReducer } from 'react';
 import { reducer } from './AppReducer'
 // Initial state
 const initialState = {
@@ -6,20 +6,14 @@ const initialState = {
     ],
 }
 
-
 //  Create Context
 
 export const GlobalContext = createContext(initialState);
-
-
-
 
 // Provider component 
 
 export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
-
-
     const addTrans = (trans) => {
         dispatch({
             type: 'ADD-TRANS',
@@ -32,18 +26,11 @@ export const GlobalProvider = ({ children }) => {
             payload: transId
         })
     }
-
-    const [balance, setbalance] = useState(0)
-    const [income, setincome] = useState(0)
-    const [expense, setexpense] = useState(0)
-
     return (
         <GlobalContext.Provider
             value={
                 {
-
                     transactions: state.transactions, removeTrans, addTrans,
-                    balance, setbalance, income, setincome, expense, setexpense
                 }
             }
         >
